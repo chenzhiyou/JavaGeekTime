@@ -34,7 +34,17 @@ public class ScoreArrayMaxScore {
                 maxScoreIndex = i;
             }
         }
-        System.out.println("最好成绩为"+maxScore+"最好成绩的科目是"+scoreNames[maxScoreIndex]);
 
+        // 如果多门成绩是最好的处理方式
+        int num = 0;
+        String str = "最好的科目有";
+        for (int i=0; i <totalScoreCount; i++){
+            if (scores[i] == maxScore){
+                num ++;
+                str = str + scoreNames[i];
+            }
+
+        }
+        System.out.println("最好的成绩有"+num +"门，最好成绩为"+maxScore+str);
     }
 }
