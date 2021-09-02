@@ -75,6 +75,7 @@ public class RunLittleSuperMarketAppMain {
 
                 Merchandise m = all[index];
                 System.out.println("您选购的商品名字"+ m.name + ". 单价是" + m.soldPrice + "请输入要购买的数量");
+                m.describe();
                 int numToBuy = scanner.nextInt();
                 if (numToBuy <=0 ){
                     System.out.println("不买看看也好，欢迎继续挑选");
