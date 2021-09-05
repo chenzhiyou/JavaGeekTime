@@ -6,7 +6,7 @@ import code020.supermarket.Merchandise;
 
 import java.util.Scanner;
 
-public class RunLittleSuperMarketAppMain {
+public class RunLittleSuperMarketSecodHalfPriceAppMain {
     public static void main(String[] args) {
         LittleSupperMarket littleSupperMarket = new LittleSupperMarket();
         littleSupperMarket.address = "世纪大道666号";
@@ -62,73 +62,34 @@ public class RunLittleSuperMarketAppMain {
             double totalCost = 0;
 
             while (true){
-                System.out.println("本店提供" + all.length + "种商品，欢迎选购。请输入商品编号：");
+                System.out.println("今日超市大特惠，所有商品第二件半价！选择要购买的商品索引");
                 int index = scanner.nextInt();
-                if(index < 0){
+                if (index < 0){
+                    System.out.println("欢迎下次再来");
                     break;
                 }
 
-                if(index >= all.length){
-                    System.out.println("本店没有这种商品，请输入编号在0到" + (all.length - 1) +"之内的商品编号。");
+                double price = littleSupperMarket.merchandises[index].purchasePrice;
+                System.out.println("商品单价为" + price);
+
+                System.out.println("请输入要购买的数量:");
+                int count = scanner.nextInt();
+
+                if (littleSupperMarket.merchandises[index].count <count){
+                    System.out.println("商品库存不足");
                     continue;
                 }
 
-                Merchandise m = all[index];
-                System.out.println("您选购的商品名字"+ m.name + ". 单价是" + m.soldPrice + "请输入要购买的数量");
-                m.describe();
-                int numToBuy = scanner.nextInt();
-                if (numToBuy <=0 ){
-                    System.out.println("不买看看也好，欢迎继续挑选");
-                    continue;
+                int fullPriceCount = count/2 +count %2;
+                int halfPriceCount = count -fullPriceCount;
+                totalCost = price * fullPriceCount + halfPriceCount *price/2;
+
+                littleSupperMarket.merchandises[index].count -= count;
+
+                System.out.println("商品总价为:" + totalCost);
+
                 }
-                totalCost += numToBuy * m.soldPrice;
-                if (totalCost > customer.money){
-                    System.out.println("您带的钱不够，欢迎继续挑选");
-                    continue;
-                }
-
-                System.out.println(totalCost);
-                m.count -= numToBuy;
-                littleSupperMarket.merchandiseSold[index] += numToBuy;
-
-            }
-
-            customer.money -= totalCost;
-            if (customer.isDrivingCar){
-                littleSupperMarket.parkingCount++;
-            }
-            System.out.println("顾客"+customer.name +"共消费了" + totalCost );
-            littleSupperMarket.incomingSum = totalCost;
-
-            System.out.println("还继续营业吗");
-            open = scanner.nextBoolean();
         }
 
-        System.out.println("超市关门了");
-        System.out.println("今天总营业额为" +littleSupperMarket.incomingSum + "营业情况如下：");
-
-        for (int i=0; i < littleSupperMarket.merchandiseSold.length; i++){
-            Merchandise m = all[i];
-            int numSold = littleSupperMarket.merchandiseSold[i];
-            if (numSold >0){
-                double incomming = m.soldPrice *numSold;
-                double netIncomming = (m.soldPrice - m.purchasePrice)* numSold;
-                System.out.println(m.name + "售出了" + numSold + "个，销售额为" + incomming
-                + ".净利润为" + netIncomming);
-            }
-        }
-
-        for (int i =0; i<all.length; i++){
-            Merchandise m = new Merchandise();
-            m.name = "商品" + i;
-            m.count = 200;
-            m.purchasePrice = Math.random()*200;
-            m.soldPrice = m.purchasePrice*(1+Math.random());
-            m.id = "ID" + i;
-            all[i]= m;
-        }
-
-        System.out.println("下面请利润最高的商品自我介绍：");
-        littleSupperMarket.getBiggerstProfitMerchandise().describe();
     }
 }
