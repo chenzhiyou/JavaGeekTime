@@ -76,6 +76,8 @@ public class RunLittleSuperMarketSecodHalfPriceAppMain {
                 int count = scanner.nextInt();
 
                 Merchandise m = littleSupperMarket.merchandises[index];
+                boolean isTrue = m.isTheBiggestTotalValueOne(littleSupperMarket);
+                System.out.println("用户选择的商品是超市价格最高的：" +isTrue);
 //                totalCost = m.buy(count);
                 totalCost = m.buyAndPrintLeft(count, true);
                 System.out.println("商品总价为" + totalCost);

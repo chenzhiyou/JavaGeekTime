@@ -102,4 +102,24 @@ public class Merchandise {
         }
         return totalCost;
     }
+
+    // 参数可以是任意类型，包括自定义类型，甚至是自己的类型都没有问题
+    public boolean totalValueBiggerThan(Merchandise merchandise){
+        return count * purchasePrice > merchandise.purchasePrice * merchandise.count;
+    }
+
+    // 参数可以是任何类型，包括自定义类型
+    // 求是否是售价最高的商品
+    public boolean isTheBiggestTotalValueOne(LittleSupperMarket littleSupperMarket){
+        double totalValue = count * purchasePrice;
+        for (int i = 0; i< littleSupperMarket.merchandises.length; i++){
+            Merchandise m = littleSupperMarket.merchandises[i];
+            double newTotalValue = m.purchasePrice * m.count;
+            if (totalValue < newTotalValue){
+                // 执行到return的时候，方法直接结束，不管是不是在循环中，是在第几层循环中
+                return false;
+            }
+        }
+        return true;
+    }
 }
