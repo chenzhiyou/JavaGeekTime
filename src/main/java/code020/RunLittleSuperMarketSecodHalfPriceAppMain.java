@@ -76,8 +76,8 @@ public class RunLittleSuperMarketSecodHalfPriceAppMain {
                 int count = scanner.nextInt();
 
                 Merchandise m = littleSupperMarket.merchandises[index];
-                totalCost = m.buy(count);
-
+//                totalCost = m.buy(count);
+                totalCost = m.buyAndPrintLeft(count, true);
                 System.out.println("商品总价为" + totalCost);
 
 

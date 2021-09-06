@@ -79,4 +79,27 @@ public class Merchandise {
 
         return totalCost;
     }
+
+    // 一个方法可以有多个参数，多个参数直接用逗号隔开
+    public double buyAndPrintLeft(int countToBuy, boolean printLeft){
+        if (count < countToBuy){
+            System.out.println("商品库存不足");
+            if (printLeft){
+                System.out.println("商品剩余库存为:" + count);
+            }
+            return -1;
+        }
+
+        System.out.println("商品单价为"+ purchasePrice);
+
+        int fullPriceCount = countToBuy/2 +countToBuy %2;
+        int halfPriceCount = countToBuy -fullPriceCount;
+        double totalCost = purchasePrice * fullPriceCount + halfPriceCount *purchasePrice/2;
+
+        count -= countToBuy;
+        if (printLeft){
+            System.out.println("剩余库存为："+ count);
+        }
+        return totalCost;
+    }
 }
