@@ -75,18 +75,11 @@ public class RunLittleSuperMarketSecodHalfPriceAppMain {
                 System.out.println("请输入要购买的数量:");
                 int count = scanner.nextInt();
 
-                if (littleSupperMarket.merchandises[index].count <count){
-                    System.out.println("商品库存不足");
-                    continue;
-                }
+                Merchandise m = littleSupperMarket.merchandises[index];
+                totalCost = m.buy(count);
 
-                int fullPriceCount = count/2 +count %2;
-                int halfPriceCount = count -fullPriceCount;
-                totalCost = price * fullPriceCount + halfPriceCount *price/2;
+                System.out.println("商品总价为" + totalCost);
 
-                littleSupperMarket.merchandises[index].count -= count;
-
-                System.out.println("商品总价为:" + totalCost);
 
                 }
         }

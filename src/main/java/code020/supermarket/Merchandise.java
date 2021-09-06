@@ -61,17 +61,19 @@ public class Merchandise {
     参数的值在调用方法的时候需要给出，有的资料叫实参（实际参数）
     对应的，方法定义这里的参数，叫做形参（形式参数）
      */
+
     public double buy(int countToBuy){
         if (count < countToBuy){
+            // 如果返回值是复数，就代表库存不足，购买失败
             System.out.println("商品库存不足");
             return -1;
         }
 
         System.out.println("商品单价为"+ purchasePrice);
 
-        int fullPriceCount = count/2 +count %2;
-        int halfPriceCount = count -fullPriceCount;
-        double totalCost = soldPrice * fullPriceCount + halfPriceCount *soldPrice/2;
+        int fullPriceCount = countToBuy/2 +countToBuy %2;
+        int halfPriceCount = countToBuy -fullPriceCount;
+        double totalCost = purchasePrice * fullPriceCount + halfPriceCount *purchasePrice/2;
 
         count -= countToBuy;
 
