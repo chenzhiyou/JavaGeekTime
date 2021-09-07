@@ -138,4 +138,9 @@ public class Merchandise {
         System.out.println("Merchandise的addCount方法使用的对象是"+ this);
     }
 
+    public boolean hasEnoughCountFor(int count){
+        System.out.println("Merchandise的hasEnoughCountFor方法使用的对象是"+ this);
+        return this.count >= count;
+    }
+
 }
