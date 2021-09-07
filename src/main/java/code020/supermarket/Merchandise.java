@@ -122,4 +122,20 @@ public class Merchandise {
         }
         return true;
     }
+
+
+    public void duplicateName(int count){
+        this.count = 999;
+        count = 999;
+    }
+    /*
+    方法里隐藏着一个this自引用，指向调用这个方法的对象
+    使用一个对象调用方法，也叫做在这个对象上调用方法。因为方法可以访问这个对象的值
+    访问一个成员变量的完整形态，是"this.成员变量的名字"
+     */
+    public void addCount(int count){
+        this.count += count;
+        System.out.println("Merchandise的addCount方法使用的对象是"+ this);
+    }
+
 }
