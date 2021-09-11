@@ -7,6 +7,18 @@ public class MerchandiseV2 {
     public double soldPrice;
     public  double purchasePrice;
 
+    public static double DISCOUNT_FOR_VIP = 0.95;
+
+    public static double getVIPDiscount(){
+        return DISCOUNT_FOR_VIP;
+    }
+
+    public static double getDiscountOnDiscount(LittleSupperMarket littleSupperMarket){
+        double activityDiscount = littleSupperMarket.parkingCount;
+        return DISCOUNT_FOR_VIP * activityDiscount;
+
+    }
+
     public void init(String name, String id, int count, double soldPrice, double purchasePrice){
         if(soldPrice <0 ){
 
