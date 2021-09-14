@@ -1,5 +1,7 @@
 package code020.supermarket;
 
+import java.util.Objects;
+
 public class MerchandiseV2 {
     public String name;
     public String id;
@@ -45,6 +47,35 @@ public class MerchandiseV2 {
         }
         // 一个方法可以有多个返回语句
         return profit;
+    }
+
+//    public boolean equals(Object o){
+//        if (this == o){
+//            return true;
+//        }
+//        if (!(o instanceof MerchandiseV2)){
+//            return false;
+//        }
+//        MerchandiseV2 that = (MerchandiseV2) o;
+//        return getCurrentCount() == that.getCurrentCount();
+//    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MerchandiseV2)) return false;
+        MerchandiseV2 that = (MerchandiseV2) o;
+        return count == that.count &&
+                Double.compare(that.soldPrice, soldPrice) == 0 &&
+                Double.compare(that.purchasePrice, purchasePrice) == 0 &&
+                name.equals(that.name) &&
+                id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id, count, soldPrice, purchasePrice);
     }
 
     public double getCurrentCount(){
